@@ -1,24 +1,31 @@
-class Node:
-  def __init__(self, data):
-    self.data = data
-    self.next = None
-
+class Node: 
+  def __init__(self, data): 
+    self.data = data 
+    self.next = None 
 
 class Queue:
-  def __init__(self):
-    self.head = None
-    self.last = None
-
-  def enqueue(self, data) -> None:
-    # Write your code here
-
+  def __init__(self): 
+    self.head = None 
+    self.last = None 
+  def enqueue(self, data) -> None: 
+    last = self.last 
+    node = Node(data) 
+    if(self.last is None and self.head is None): 
+      self.last , self.head = node , node 
+    else:
+      self.last.next = node 
+      self.last = node 
   def dequeue(self) -> None:
-    # Write your code here
-
+    if self.head == self.last:
+      self.head = self.last = None 
+    else:
+      self.head = self.head.next 
   def status(self) -> None:
-    # Write your code here
-
-
+    ptr = self.head 
+    while ptr != None:
+      print(ptr.data,end = "=>") 
+      ptr = ptr.next 
+    print("None") 
 # Do not change the following code
 queue = Queue()
 operations = []
